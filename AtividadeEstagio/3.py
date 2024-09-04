@@ -1,6 +1,6 @@
 import json
 
-caminho_arquivo = 'faturamento.json'
+caminho_arquivo = 'dados.json'
 
 def ler_arquivo_json(caminho):
     with open(caminho, 'r') as arquivo:
@@ -8,7 +8,7 @@ def ler_arquivo_json(caminho):
     return dados
 
 dados = ler_arquivo_json(caminho_arquivo)
-faturamento = dados["faturamento"]
+faturamento = [dia["valor"] for dia in dados if dia["valor"] > 0]
 
 menor_faturamento = min(faturamento)
 maior_faturamento = max(faturamento)
